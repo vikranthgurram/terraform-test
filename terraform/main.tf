@@ -10,3 +10,5 @@ terraform {
 provider "google" {
  credentials = "/Users/saradaganta/Downloads/new-gcp-466623-faaa6b07b2da.json"
 }
+
+//testing
