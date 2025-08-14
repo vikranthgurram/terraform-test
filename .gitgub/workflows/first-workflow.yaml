@@ -1,0 +1,34 @@
+name : this is for terraform
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+
+ jobs:
+    terraform :
+      runs-on : ubuntu-latest
+
+  steps:
+    - name : checkout the branch
+    uses: action/checkout@v4  
+
+   - name : terraform setup
+    uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6 
+
+   - name : terraform init
+      runs : terraform init
+
+   - name : terraform plan
+      runs : terraform plan
+
+   - name : terraform apply
+   - if github.ref = 'ref/heads/main'
+     runs : terraform apply -auto-approve             
+    
+
+       
+  
