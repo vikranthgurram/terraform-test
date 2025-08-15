@@ -15,7 +15,7 @@ provider "google" {
 
 resource "google_compute_instance" "gcp-instance" {
      name = "google-compute"
-     machine_type = "e2.micro"
+     machine_type = "e2-medium"
      zone = "us-central1-c"
 
      boot_disk {
