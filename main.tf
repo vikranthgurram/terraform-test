@@ -26,6 +26,6 @@ resource "google_compute_instance" "gcp-instance" {
      }
 
      network_interface {
-        network = default
+        network = "default"
      }
 }
