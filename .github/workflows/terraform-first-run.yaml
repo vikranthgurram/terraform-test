@@ -28,7 +28,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         run: terraform apply -auto-approve
         env:
-          credentials: ${{ secrets.CREDENTIALS }}
+         TF_VAR_credentials: ${{ secrets.SERVICE_KEY }}
           
 # testing
 
