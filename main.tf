@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-    credentials = "/Users/saradaganta/Downloads/new-gcp-466623-faaa6b07b2da.json"
+    credentials = file("/Users/saradaganta/Downloads/new-gcp-466623-faaa6b07b2da.json")
     project = "new-gcp-466623"
     region = "us-central1"
 }
