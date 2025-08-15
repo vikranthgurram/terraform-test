@@ -21,15 +21,12 @@ jobs:
       - name: Terraform init
         run: terraform init
 
-      - name: Terraform plan
-        run: terraform plan
 
       - name: Terraform apply
-        if: ${{ github.ref == 'refs/heads/main' }}
         run: terraform apply -auto-approve
         env:
          TF_VAR_credentials: ${{ secrets.SERVICE_KEY }}
           
-# testing
+
 
 
