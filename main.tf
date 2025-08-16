@@ -31,12 +31,12 @@ resource "google_compute_instance" "gcp-instance" {
 }
 
 resource "google_compute_network" "my_vpc" {
-    name = "my_vpc1"
+    name = "my-vpc1"
     auto_create_subnetworks = "false"
 }
 
 resource "google_compute_subnetwork" "my_subnetwork" {
-    name = "my_subnetwork01"
+    name = "my-subnetwork01"
     network = google_compute_network.my_vpc.name
     ip_cidr_range = "10.0.0.0/16"
      region = "us-central1"
