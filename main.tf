@@ -53,3 +53,8 @@ resource "google_compute_firewall" "allow-ssh" {
 
     source_ranges = ["0.0.0.0/0"]
 }
+
+resource "google_compute_network" "my_vpctesting" {
+    name = "vic-test"
+    auto_create_subnetworks = false
+}
