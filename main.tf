@@ -10,7 +10,7 @@ terraform {
 provider "google" {
     credentials = var.credentials
     project = "new-gcp-466623"
-    region = "us-central1"
+    region = "${var.region}"
 }
 
 resource "google_compute_instance" "gcp-instance" {
@@ -28,4 +28,28 @@ resource "google_compute_instance" "gcp-instance" {
      network_interface {
         network = "default"
      }
+}
+
+resource "google_compute_network" "my_vpc" {
+    name = "my_vpc1"
+    auto_create_subnetworks = "false"
+}
+
+resource "google_compute_subnetwork" "my_subnetwork" {
+    name = "my_subnetwork01"
+    network = google_compute_network.my_vpc.name
+    ip_cidr_range = "10.0.0.0/16"
+     region = "us-central1"
+}
+
+resource "google_compute_firewall" "allow-ssh" {
+    name = "allow-ssh"
+    network = google_compute_network.my_vpc.name
+
+    allow {
+        protocol = "tcp"
+        ports = ["22"]
+    }
+
+    source_ranges = ["0.0.0.0/0"]
 }

@@ -1,3 +1,4 @@
-variable "credentials" {
-  type = string
+variable "region" {
+    type = "string"
+    description = "this is for string"
 }
