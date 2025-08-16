@@ -1,4 +1,4 @@
 variable "region" {
-    type = "string"
+    type = string
     description = "this is for string"
 }
