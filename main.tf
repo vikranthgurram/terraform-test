@@ -61,6 +61,6 @@ resource "google_compute_network" "my_vpctesting" {
 
 terraform {
     backend "gcs" {
-        bucket_name = "statefile"
+        bucket = "my-bucket"
     }
 }
