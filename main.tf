@@ -13,15 +13,15 @@ provider "google" {
     region = "${var.region}"
 }
 
-resource "google_storage_bucket" "gcp_bucket" {
-    name = "storage-bucket"
-    location = "us-central1"
 
+terraform {
+    backend "gcs" {
+        bucket = "storage_bucket-02"
+        prefix = "state-file"
+    }
 }
 
-
-
-resource "google_compute_instance" "gcp-instance" {
+resource "google_compute_instance" "gcp-instance01" {
      name = "google-compute"
      machine_type = "e2-medium"
      zone = "us-central1-c"
@@ -38,20 +38,20 @@ resource "google_compute_instance" "gcp-instance" {
      }
 }
 
-resource "google_compute_network" "my_vpc" {
-    name = "my-vpc1"
+resource "google_compute_network" "my_vpc01" {
+    name = "my-vpc101"
     auto_create_subnetworks = "false"
 }
 
-resource "google_compute_subnetwork" "my_subnetwork" {
-    name = "my-subnetwork01"
+resource "google_compute_subnetwork" "my_subnetwork01" {
+    name = "my-subnetwork0101"
     network = google_compute_network.my_vpc.name
     ip_cidr_range = "10.0.0.0/16"
      region = "us-central1"
 }
 
-resource "google_compute_firewall" "allow-ssh" {
-    name = "allow-ssh"
+resource "google_compute_firewall" "allow-ssh01" {
+    name = "allow-ssh01"
     network = google_compute_network.my_vpc.name
 
     allow {
@@ -62,10 +62,7 @@ resource "google_compute_firewall" "allow-ssh" {
     source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_network" "my_vpctesting" {
-    name = "vic-test"
-    auto_create_subnetworks = false
-}
+
 
 
 
