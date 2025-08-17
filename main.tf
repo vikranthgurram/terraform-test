@@ -21,7 +21,7 @@ resource "google_storage_bucket" "gcp_bucket" {
 
 terraform {
     backend "gcs" {
-        bucket = storage-bucket
+        bucket = "storage-bucket"
         prefix = "state-file"
     }
 }
