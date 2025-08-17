@@ -13,6 +13,19 @@ provider "google" {
     region = "${var.region}"
 }
 
+resource "google_storage_bucket" "gcp_bucket" {
+    name = "storage-bucket"
+    location = "us-central1"
+
+}
+
+terraform {
+    backend "gcs" {
+        bucket = google_storage_bucket.gcp_bucket.name
+        prefix = "state-file"
+    }
+}
+
 resource "google_compute_instance" "gcp-instance" {
      name = "google-compute"
      machine_type = "e2-medium"

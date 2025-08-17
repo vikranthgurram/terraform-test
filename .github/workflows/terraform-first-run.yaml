@@ -19,8 +19,6 @@ jobs:
           terraform_version: 1.6.6   
           
       - name: Terraform init
-        env:
-         TF_VAR_credentials: ${{ secrets.SERVICE_KEY }}
         run: terraform init
 
 
