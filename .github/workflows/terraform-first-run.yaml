@@ -11,7 +11,12 @@ jobs:
 
     steps:
       - name: Checkout the branch
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4 
+
+      - name: Set up GCP credentials
+        run: |
+         echo "${{ secrets.SERVICE_KEY }}" > $HOME/gcp-key.json
+         echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV   
 
       - name: Terraform setup
         uses: hashicorp/setup-terraform@v3
@@ -27,10 +32,7 @@ jobs:
         env:
          TF_VAR_credentials: ${{ secrets.SERVICE_KEY }}
 
-      - name: Set up GCP credentials
-  run: |
-    echo "${{ secrets.SERVICE_KEY }}" > $HOME/gcp-key.json
-    echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
+      
 
       
       
