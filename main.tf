@@ -21,7 +21,7 @@ resource "google_storage_bucket" "gcp_bucket" {
 
 terraform {
     backend "gcs" {
-        bucket = google_storage_bucket.gcp_bucket.name
+        bucket = storage-bucket
         prefix = "state-file"
     }
 }
@@ -72,10 +72,6 @@ resource "google_compute_network" "my_vpctesting" {
     auto_create_subnetworks = false
 }
 
-terraform {
-    backend "gcs" {
-        bucket = "my-bucket"
-    }
-}
+
 
 //testing
