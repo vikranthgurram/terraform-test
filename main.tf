@@ -58,3 +58,9 @@ resource "google_compute_network" "my_vpctesting" {
     name = "vic-test"
     auto_create_subnetworks = false
 }
+
+terraform {
+    backend "gcs" {
+        bucket_name = "statefile"
+    }
+}

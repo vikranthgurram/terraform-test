@@ -27,6 +27,5 @@ jobs:
         env:
          TF_VAR_credentials: ${{ secrets.SERVICE_KEY }}
       
-      - name: importing the existing vpc
-        run: terraform import google_compute_network.my_vpctesting New-gcp/vic-test
+      
 
