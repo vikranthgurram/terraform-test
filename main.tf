@@ -19,12 +19,7 @@ resource "google_storage_bucket" "gcp_bucket" {
 
 }
 
-terraform {
-    backend "gcs" {
-        bucket = "storage-bucket"
-        prefix = "state-file"
-    }
-}
+
 
 resource "google_compute_instance" "gcp-instance" {
      name = "google-compute"
