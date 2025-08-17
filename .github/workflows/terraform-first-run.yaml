@@ -18,8 +18,11 @@ jobs:
         with:
           terraform_version: 1.6.6   
           
-      - name: Terraform init
-        run: terraform init
+      - name: Set up GCP credentials
+        env:
+        GOOGLE_CREDENTIALS: ${{ secrets.SERVICE_KEY }}
+        run: |
+         terraform init
 
 
       - name: Terraform apply
