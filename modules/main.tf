@@ -8,18 +8,11 @@ terraform {
 }
 
 provider "google" {
-    credentials = var.credentials
+    credentials = file("/Users/saradaganta/Downloads/new-gcp-466623-faaa6b07b2da.json")
     project = "new-gcp-466623"
     region = "${var.region}"
 }
 
-
-terraform {
-    backend "gcs" {
-        bucket = "storage_bucket-02"
-        prefix = "state-file"
-    }
-}
 
 resource "google_compute_instance" "gcp-instance01" {
      name = "google-compute"
